@@ -1,5 +1,9 @@
+import { Options } from "../../types";
+
 class Loader {
-    constructor(baseLink, options) {
+  baseLink: string;
+  options: Options;
+    constructor(baseLink: string, options: Options) {
         this.baseLink = baseLink;
         this.options = options;
     }
