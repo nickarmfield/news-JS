@@ -12,3 +12,4 @@ export type ResponseType = Response;
 export type SourceType = { id: string; name: string };
 export type ArticlesType = { articles: Array<ArticleType> };
 export type SourcesType = { sources: Array<SourceType> };
+export type CallBack<Type> = (data: Type) => void;

@@ -1,5 +1,5 @@
-import { OptionsType, ResponseType } from "../../types";
-type CallBack<Type> = (data: Type) => void;
+import { OptionsType, ResponseType, CallBack } from "../../types";
+
 class Loader {
   baseLink: string;
   options: OptionsType;
@@ -8,13 +8,13 @@ class Loader {
         this.options = options;
     }
 
-    getResp(
-        { endpoint, options = {} }: { endpoint: string, options: OptionsType },
-        callback: CallBack<void> = () => {
+    public getResp<Type>(
+        { endpoint, options = {} }: { endpoint: string, options?: Record<string, string> },
+        callback: CallBack<Type> = () => {
             console.error('No callback for GET response');
         }
     ) {
-        this.load('GET', endpoint, callback, options);
+        this.load<Type>('GET', endpoint, callback, options);
     }
 
     errorHandler(res: ResponseType) {
@@ -38,7 +38,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load<Type>(method: string, endpoint: string, callback: CallBack<Type>, options: Record<string, string> = {}) {
+    private load<Type>(method: string, endpoint: string, callback: CallBack<Type>, options: Record<string, string> = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
