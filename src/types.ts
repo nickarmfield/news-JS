@@ -1,4 +1,4 @@
-export type Options = { apiKey: string };
+export type OptionsType = { apiKey?: string };
 export type NewsType = {
     title: string;
     description: string;
@@ -8,3 +8,4 @@ export type NewsType = {
     publishedAt: string;
     source: { name: string };
 };
+export type ResponseType = Response;
