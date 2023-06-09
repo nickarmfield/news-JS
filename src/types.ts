@@ -9,7 +9,7 @@ export type ArticleType = {
     source: SourceType;
 };
 export type ResponseType = Response;
-export type SourceType = { id: string; name: string };
+export type SourceType = { id: string | number; name: string };
 export interface ArticlesType {
     articles: Array<ArticleType>;
 }
