@@ -20,7 +20,7 @@ class Sources {
                 name.textContent = item.name;
             }
 
-            sourceClone.querySelector(SourcesSelectors.ITEM)?.setAttribute('data-source-id', item.id);
+            sourceClone.querySelector(SourcesSelectors.ITEM)?.setAttribute('data-source-id', String(item.id));
 
             fragment.append(sourceClone);
         });
